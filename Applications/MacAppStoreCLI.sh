@@ -23,7 +23,7 @@ function configureAppMacAppStore(){
 				local BOLD=$(tput bold)
 				local REGULAR=$(tput sgr0)
 				local countdown=$((retries * 5))
-				showinfo "Please open App Store and sign in using your Apple ID. Skipping this check in: ${BOLD}$countdown seconds${REGULAR}" "error"
+				showinfo "Please open App Store and sign in using your Apple ID.\nSkipping this check in: ${BOLD}$countdown seconds${REGULAR}" "error"
 				((retries--))
 				sleep 5
 			done

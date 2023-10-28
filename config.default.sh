@@ -81,12 +81,18 @@ installSyntaxHighlightQuickLook=true
 # -- 2.4 Install Applications --
 install1Password=false
 installAdGuardSafari=true
+installAlDente=true # <-- only supported on MacBooks (MBA, MBP)
 installBeyondCompare=false
 installDiscord=false
+installEqMac=true
 installFig=false
 installFirefox=false
 installGoogleChrome=false
+installGrandPerspective=true
+installLinearMouse=true
+installMacsFanControl=true
 installMicrosoftOffice=false
+installNova=false
 installPixelmator=false
 installSpotify=false
 installStrongbox=false
@@ -106,11 +112,11 @@ gitUseremail='' # <-- Email to use with Git
 installBoop=false
 installComposer=false # <-- will also install PHP
 installDocker=false # <-- only installed when MAMP=FALSE
+useOrbStackOverDocker=false # <-- use OrbStack instead of Docker
 installSonarQube=false # <-- only installed when Docker=TRUE
 installFork=false
 installGasMask=false
 installMAMP=false
-installNova=false
 installSequelAce=false
 
 # -- 2.6 Mac Gaming Apps and Games --

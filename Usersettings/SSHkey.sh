@@ -16,7 +16,7 @@ function generateSSHKey(){
 		echo " UseKeychain yes" >> $HOME/.ssh/config
 		echo " IdentityFile ~/.ssh/id_rsa" >> $HOME/.ssh/config
 		# --> Add SSH key locally
-		ssh-add --apple-use-keychain $HOME/.ssh/id_rsa
+		ssh-add $HOME/.ssh/id_rsa
 
 		# --> GitHub SSH Key config
 		if checkIfNotEmpty "$gitUsername" && checkIfFileExists "$HOME/.ssh/id_rsa.pub"; then

@@ -3,11 +3,6 @@
 # Homebrew installation
 function installAppHomebrew(){
     if ! checkIfHomebrewInstalled; then
-        # --> Add Homebrew to User's PATH
-        (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.zprofile
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-        source $HOME/.zprofile
-
         # --> Check for Xcode CLT
         # (pre-requisite for Homebrew)
         if ! checkIfXcodeInstalled; then
@@ -26,8 +21,15 @@ export -f installAppHomebrew
 
 # Homebrew configurations
 function configureAppHomebrew(){
-    # Enable Homebrew's Auto-Update (requires LaunchAgents directory)
-    mkdir -p "$HOME/Library/LaunchAgents"
-    brew autoupdate start --upgrade
+    if checkIfHomebrewInstalled; then
+        # --> Add Homebrew to User's PATH
+        (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.zprofile
+        # --> Reload ZSH Shell config file
+        source $HOME/.zprofile
+
+        # --> Enable Homebrew's Auto-Update (requires LaunchAgents directory)
+        mkdir -p "$HOME/Library/LaunchAgents"
+        brew autoupdate start --upgrade
+    fi
 }
 export -f configureAppHomebrew

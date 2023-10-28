@@ -274,6 +274,10 @@ for filesetting in ./FilesFolders/*.sh; do
 done
 unset filesetting
 showinfo "CREATING ADDITIONAL FOLDERS AND FILES" "shout"
+# --> ZSH profile configuration file
+showinfo "Adding a ~/.zprofile ZSH Shell config file to userhome:" "note"
+createUserFileZprofile
+showinfo "" "confirm"
 # --> Library folder
 if [ "$showLibraryFolder" = true ]; then
     showinfo "Making the ~/Library folder in userhome visible:" "note"
@@ -368,6 +372,84 @@ if [ "$install1Password" = true ]; then
     installApp1Password
     showinfo "" "confirm"
 fi
+# -- AlDente.app (only on portable Macs) --
+if [ "$installAlDente" = true ] && checkIfMacIsPortable; then
+    showinfo "Installing AlDente:" "note"
+    installAppAlDente
+    showinfo "" "confirm"
+fi
+# -- Beyond Compare --
+if [ "$installBeyondCompare" = true ]; then
+    showinfo "Installing Beyond Compare:" "note"
+    installAppBeyondCompare
+    showinfo "" "confirm"
+fi
+# -- Discord.app --
+if [ "$installDiscord" = true ]; then
+    showinfo "Installing Discord:" "note"
+    installAppDiscord
+    showinfo "" "confirm"
+fi
+# -- eqMac.app --
+if [ "$installEqMac" = true ]; then
+    showinfo "Installing eqMac:" "note"
+    installAppEqMac
+    showinfo "" "confirm"
+fi
+# -- Google Chrome.app --
+if [ "$installGoogleChrome" = true ]; then
+    showinfo "Installing Google Chrome Browser:" "note"
+    installAppGoogleChrome
+    showinfo "" "confirm"
+fi
+# -- GrandPerspective.app --
+if [ "$installGrandPerspective" = true ]; then
+    showinfo "Installing GrandPerspective:" "note"
+    installAppGrandPerspective
+    showinfo "" "confirm"
+fi
+# -- LinearMouse.app --
+if [ "$installLinearMouse" = true ]; then
+    showinfo "Installing LinearMouse:" "note"
+    installAppLinearMouse
+    showinfo "" "confirm"
+fi
+# -- Macs Fan Control.app --
+if [ "$installMacsFanControl" = true ]; then
+    showinfo "Installing Macs Fan Control:" "note"
+    installAppMacsFanControl
+    showinfo "" "confirm"
+fi
+# -- Microsoft Office / Office 365 for Mac --
+if [ "$installMicrosoftOffice" = true ]; then
+    showinfo "Installing Microsoft Office for Mac:" "note"
+    installAppMicrosoftOffice
+    showinfo "" "confirm"
+fi
+# -- Mozilla Firefox.app --
+if [ "$installFirefox" = true ]; then
+    showinfo "Installing Firefox Browser:" "note"
+    installAppFirefox
+    showinfo "" "confirm"
+fi
+# -- Nova.app --
+if [ "$installNova" = true ]; then
+    showinfo "Installing Nova App:" "note"
+    installAppNova
+    showinfo "" "confirm"
+fi
+# -- Spotify.app --
+if [ "$installSpotify" = true ]; then
+    showinfo "Installing Spotify:" "note"
+    installAppSpotify
+    showinfo "" "confirm"
+fi
+# -- Telegram.app --
+if [ "$installTelegram" = true ]; then
+    showinfo "Installing Telegram:" "note"
+    installAppTelegram
+    showinfo "" "confirm"
+fi
 # -- Transmission.app --
 if [ "$installTransmission" = true ]; then
     showinfo "Installing Transmission:" "note"
@@ -380,46 +462,16 @@ if [ "$installTresorit" = true ]; then
     installAppTresorit
     showinfo "" "confirm"
 fi
-# -- Telegram.app --
-if [ "$installTelegram" = true ]; then
-    showinfo "Installing Telegram:" "note"
-    installAppTelegram
+# -- Visual Studio Code --
+if [ "$installVisualStudioCode" = true ]; then
+    showinfo "Installing Visual Studio Code:" "note"
+    installAppVSCode
     showinfo "" "confirm"
 fi
-# -- Xnapper.app --
-if [ "$installXnapper" = true ]; then
-    showinfo "Installing Xnapper:" "note"
-    installAppXnapper
-    showinfo "" "confirm"
-fi
-# -- Spotify.app --
-if [ "$installSpotify" = true ]; then
-    showinfo "Installing Spotify:" "note"
-    installAppSpotify
-    showinfo "" "confirm"
-fi
-# -- Discord.app --
-if [ "$installDiscord" = true ]; then
-    showinfo "Installing Discord:" "note"
-    installAppDiscord
-    showinfo "" "confirm"
-fi
-# -- Google Chrome.app --
-if [ "$installGoogleChrome" = true ]; then
-    showinfo "Installing Google Chrome Browser:" "note"
-    installAppGoogleChrome
-    showinfo "" "confirm"
-fi
-# -- Mozilla Firefox.app --
-if [ "$installFirefox" = true ]; then
-    showinfo "Installing Firefox Browser:" "note"
-    installAppFirefox
-    showinfo "" "confirm"
-fi
-# -- Beyond Compare --
-if [ "$installBeyondCompare" = true ]; then
-    showinfo "Installing Beyond Compare:" "note"
-    installAppBeyondCompare
+# -- VLC Media Player --
+if [ "$installVLC" = true ]; then
+    showinfo "Installing VLC Media Player:" "note"
+    installAppVLC
     showinfo "" "confirm"
 fi
 # -- Warp --
@@ -428,22 +480,10 @@ if [ "$installWarp" = true ]; then
     installAppWarp
     showinfo "" "confirm"
 fi
-# -- Visual Studio Code --
-if [ "$installVisualStudioCode" = true ]; then
-    showinfo "Installing Visual Studio Code:" "note"
-    installAppVSCode
-    showinfo "" "confirm"
-fi
-# -- Microsoft Office / Office 365 for Mac --
-if [ "$installMicrosoftOffice" = true ]; then
-    showinfo "Installing Microsoft Office for Mac:" "note"
-    installAppMicrosoftOffice
-    showinfo "" "confirm"
-fi
-# -- VLC Media Player --
-if [ "$installVLC" = true ]; then
-    showinfo "Installing VLC Media Player:" "note"
-    installAppVLC
+# -- Xnapper.app --
+if [ "$installXnapper" = true ]; then
+    showinfo "Installing Xnapper:" "note"
+    installAppXnapper
     showinfo "" "confirm"
 fi
 # -- Steam --
@@ -492,8 +532,8 @@ if [ "$installHomebrew" = true ]; then
             showinfo "" "confirm"
         fi
 
-        # --> Fig.io
-        if [ "$installFig" = true ]; then
+        # --> Fig.io (only if Warp was not installed)
+        if [ "$installFig" = true ] && [ ! "$installWarp" ]; then
             showinfo "Installing Fig:" "note"
             brewinstallAppFig
             showinfo "" "confirm"
@@ -601,13 +641,6 @@ if [ "$installWebdevTools" = true ]; then
         showinfo "" "confirm"
     fi
 
-    # -- Nova.app --
-    if [ "$installNova" = true ]; then
-        showinfo "Installing Nova App:" "note"
-        installAppNova
-        showinfo "" "confirm"
-    fi
-
     # -- Gas Mask.app --
     if [ "$installGasMask" = true ]; then
         showinfo "Installing Gas Mask Hostfiles-Manager:" "note"
@@ -631,8 +664,24 @@ if [ "$installWebdevTools" = true ]; then
     fi
 
     if [ "$installMAMP" = false ] || [ ! "$installMAMP" ]; then
-        # -- Docker --
-        if [ "$installDocker" = true ] && checkIfHomebrewInstalled; then
+        # -- OrbStack (preferred over Docker) --
+        if [ "$useOrbStackOverDocker" = true ]; then
+            showinfo "Installing OrbStack (Docker alternative):" "note"
+            if [ checkIfHomebrewInstalled ]; then
+                brewinstallAppOrbStack
+            else
+                installAppOrbStack
+            fi
+            showinfo "" "confirm"
+
+            # -- SonarQube (for Docker) --
+            if [ "$installSonarQube" = true ] && [ checkIfHomebrewInstalled ]; then
+                showinfo "Installing SonarQube for Docker:" "note"
+                brewinstallAppSonarQube
+                showinfo "" "confirm"
+            fi
+        # -- Docker for Mac --
+        elif [ "$installDocker" = true ] && checkIfHomebrewInstalled; then
             showinfo "Installing Docker for Mac:" "note"
             brewinstallAppDocker
             showinfo "" "confirm"
@@ -672,40 +721,65 @@ fi
 # ------------------------------
 showinfo "APPLY APP CONFIGURATIONS" "shout"
 # -- Dock customizations --
-if [ "$beautifyDock" = true ] && [ "$minimalDock" != true ]; then
+if [ "$beautifyDock" = true ] && [ ! "$minimalDock" ]; then
     showinfo "Beautifying the Dock:" "note"
-    # --> Add installed App Icons to Dock
+    source ./Usersettings/Dock.sh > /dev/null
+    # --> Add divider to Dock
     addSpacerToDock
+    # --> Add installed App Icons to Dock
+    if [ "$installDiscord" = true ]; then
+        addAppToDock "Discord"
+    fi
+    if [ "$installGoogleChrome" = true ]; then
+        addAppToDock "Google Chrome"
+    fi
+    if [ "$installFirefox" = true ]; then
+        addAppToDock "Firefox"
+    fi
+    if [ "$installGrandPerspective" = true ]; then
+        addAppToDock "GrandPerspective"
+    fi
+    if [ "$installNova" = true ]; then
+        addAppToDock "Nova"
+    fi
+    if [ "$installPixelmator" = true ]; then
+        addAppToDock "Pixelmator Pro"
+    fi
+    if [ "$installSpotify" = true ]; then
+        addAppToDock "Spotify"
+    fi
+    if [ "$installStrongbox" = true ]; then
+        addAppToDock "Strongbox"
+    fi
     if [ "$installTransmission" = true ]; then
         addAppToDock "Transmission"
     fi
     if [ "$installTelegram" = true ]; then
         addAppToDock "Telegram"
     fi
+    if [ "$installTresorit" = true ]; then
+        addAppToDock "Tresorit"
+    fi
+    if [ "$installVisualStudioCode" = true ]; then
+        addAppToDock "Visual Studio Code"
+    fi
     if [ "$installXnapper" = true ]; then
         addAppToDock "Xnapper"
     fi
-    if [ "$installDiscord" = true ]; then
-        addAppToDock "Discord"
-    fi
-    if [ "$installFirefox" = true ]; then
-        addAppToDock "Firefox"
-    fi
-    if [ "$installGoogleChrome" = true ]; then
-        addAppToDock "Google Chrome"
-    fi
-    if [ "$installStrongbox" = true ]; then
-        addAppToDock "Strongbox"
-    fi
-    if [ "$installPixelmator" = true ]; then
-        addAppToDock "Pixelmator Pro"
-    fi
     if [ "$installWebdevTools" = true ]; then
         addSpacerToDock
-        addAppToDock "Fork"
-        addAppToDock "Nova"
-        addAppToDock "Sequel Ace"
-        addAppToDock "Boop"
+        if [ "$installBoop" = true ]; then
+            addAppToDock "Boop"
+        fi
+        if [ "$installFork" = true ]; then
+            addAppToDock "Fork"
+        fi
+        if [ "$installGasMask" = true ]; then
+            addAppToDock "Gas Mask"
+        fi
+        if [ "$installSequelAce" = true ]; then
+            addAppToDock "Sequel Ace"
+        fi
     fi
     showinfo "" "confirm"
 fi
