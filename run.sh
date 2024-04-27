@@ -438,10 +438,22 @@ if [ "$installNova" = true ]; then
     installAppNova
     showinfo "" "confirm"
 fi
+# -- OverSight.app --
+if [ "$installOverSight" = true ]; then
+    showinfo "Installing OverSight:" "note"
+    installAppOverSight
+    showinfo "" "confirm"
+fi
 # -- Spotify.app --
 if [ "$installSpotify" = true ]; then
     showinfo "Installing Spotify:" "note"
     installAppSpotify
+    showinfo "" "confirm"
+fi
+# -- Steam --
+if [ "$installSteam" = true ]; then
+    showinfo "Installing Steam:" "note"
+    installAppSteam
     showinfo "" "confirm"
 fi
 # -- Telegram.app --
@@ -480,22 +492,16 @@ if [ "$installWarp" = true ]; then
     installAppWarp
     showinfo "" "confirm"
 fi
-# -- Xnapper.app --
-if [ "$installXnapper" = true ]; then
-    showinfo "Installing Xnapper:" "note"
-    installAppXnapper
-    showinfo "" "confirm"
-fi
-# -- Steam --
-if [ "$installSteam" = true ]; then
-    showinfo "Installing Steam:" "note"
-    installAppSteam
-    showinfo "" "confirm"
-fi
 # -- Whisky --
 if [ "$installWhisky" = true ]; then
     showinfo "Installing Whisky:" "note"
     installAppWhisky
+    showinfo "" "confirm"
+fi
+# -- Xnapper.app --
+if [ "$installXnapper" = true ]; then
+    showinfo "Installing Xnapper:" "note"
+    installAppXnapper
     showinfo "" "confirm"
 fi
 # -- Xcode Command Line Tools --
