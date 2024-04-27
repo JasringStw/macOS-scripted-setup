@@ -538,13 +538,6 @@ if [ "$installHomebrew" = true ]; then
             showinfo "" "confirm"
         fi
 
-        # --> Fig.io (only if Warp was not installed)
-        if [ "$installFig" = true ] && [ ! "$installWarp" ]; then
-            showinfo "Installing Fig:" "note"
-            brewinstallAppFig
-            showinfo "" "confirm"
-        fi
-
         # -- Install Apps from App Store --
         if [ "$installAppStoreApps" = true ]; then
             # --> Mac App Store CLI

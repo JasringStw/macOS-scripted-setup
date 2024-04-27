@@ -85,7 +85,6 @@ installAlDente=true # <-- only supported on MacBooks (MBA, MBP)
 installBeyondCompare=false
 installDiscord=false
 installEqMac=false
-installFig=false
 installFirefox=false
 installGoogleChrome=false
 installGrandPerspective=true
