@@ -402,6 +402,12 @@ if [ "$installEqMac" = true ]; then
     installAppEqMac
     showinfo "" "confirm"
 fi
+# -- Figma.app --
+if [ "$installFigma" = true ]; then
+    showinfo "Installing Figma Desktop:" "note"
+    installAppFigma
+    showinfo "" "confirm"
+fi
 # -- Google Chrome.app --
 if [ "$installGoogleChrome" = true ]; then
     showinfo "Installing Google Chrome Browser:" "note"

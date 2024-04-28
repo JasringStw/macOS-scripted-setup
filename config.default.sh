@@ -86,6 +86,7 @@ installBeyondCompare=false
 installBraveBrowser=false
 installDiscord=false
 installEqMac=false
+installFigma=false
 installFirefox=false
 installGoogleChrome=false
 installGrandPerspective=true
