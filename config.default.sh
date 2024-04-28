@@ -83,6 +83,7 @@ install1Password=false
 installAdGuardSafari=true
 installAlDente=true # <-- only supported on MacBooks (MBA, MBP)
 installBeyondCompare=false
+installBraveBrowser=false
 installDiscord=false
 installEqMac=false
 installFirefox=false

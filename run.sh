@@ -384,6 +384,12 @@ if [ "$installBeyondCompare" = true ]; then
     installAppBeyondCompare
     showinfo "" "confirm"
 fi
+# -- Brave Browser --
+if [ "$installBraveBrowser" = true ]; then
+    showinfo "Installing Brave Browser:" "note"
+    installAppBraveBrowser
+    showinfo "" "confirm"
+fi
 # -- Discord.app --
 if [ "$installDiscord" = true ]; then
     showinfo "Installing Discord:" "note"
