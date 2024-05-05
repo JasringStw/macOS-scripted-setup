@@ -59,6 +59,12 @@ function disableNaturalScrolling(){
 }
 export -f disableNaturalScrolling
 
+# Interface: allow dragging windows anywhere using Command+Control+Click
+function enableFullWindowDragzone(){
+    defaults write NSGlobalDomain "NSWindowShouldDragOnGesture" -bool TRUE
+}
+export -f enableFullWindowDragzone
+
 # Interface, disable menu bar transparency
 function disableTransparencyAndTinting(){
     defaults write NSGlobalDomain "AppleEnableMenuBarTransparency" -bool FALSE
@@ -147,6 +153,12 @@ function disableEmptyTrashWarning(){
     defaults write com.apple.finder "WarnOnEmptyTrash" -bool FALSE
 }
 export -f disableEmptyTrashWarning
+
+# Automatically remove items from the Trash after 30 days
+function enableTrashAutoremove30days(){
+    defaults write com.apple.finder "FXRemoveOldTrashItems" -bool TRUE
+}
+export -f enableTrashAutoremove30days
 
 # Add Folder settings (.DS_Store files)
 function updateApplicationsFolderListColumns(){

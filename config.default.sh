@@ -70,7 +70,7 @@ removeiMovie=false
 # -- 2.2 Required Applications --
 # (others have dependencies for these)
 installXcodeTools=false
-installHomebrew=false
+installHomebrew=true
 installAppStoreApps=true # <-- requires Homebrew=TRUE
 installRosetta=false
 
@@ -81,7 +81,7 @@ installSyntaxHighlightQuickLook=true
 # -- 2.4 Install Applications --
 install1Password=false
 installAdGuardSafari=true
-installAlDente=true # <-- only supported on MacBooks (MBA, MBP)
+installAlDente=false # <-- only supported on MacBooks (MBA, MBP)
 installBeyondCompare=false
 installBraveBrowser=false
 installDiscord=false
@@ -89,7 +89,7 @@ installEqMac=false
 installFigma=false
 installFirefox=false
 installGoogleChrome=false
-installGrandPerspective=true
+installGrandPerspective=false
 installLinearMouse=false
 installMacsFanControl=false
 installMicrosoftOffice=false
@@ -115,13 +115,14 @@ installBoop=false
 installComposer=false # <-- will also install PHP
 installDocker=false # <-- only installed when MAMP=FALSE
 useOrbStackOverDocker=false # <-- use OrbStack instead of Docker
-installSonarQube=false # <-- only installed when Docker=TRUE
 installFork=false
 installGasMask=false
 installMAMP=false
 installSequelAce=false
+installSonarQube=false # <-- only installed when Docker=TRUE
 
 # -- 2.6 Mac Gaming Apps and Games --
+installHeroicGamesLauncher=false
 installSteam=false
 installWhisky=false
 
@@ -129,17 +130,26 @@ installWhisky=false
 #     3. User and App Settings
 # ------------------------------
 # -- 3.1 macOS Layout / User Interface --
+# ---- 3.1.1 Menu Bar ----
 dateTimeInMenubar=true
-useMissionControl=true
 enableFastUserswitching=true
+useMissionControl=true
 disableTransparency=true
-showScrollbars=true
-disableNaturalScrolling=true
-disableAnnoyingTextcorrections=true
-useRealNamesForContacts=true
-enableTrackpadClicks=true # <-- only applied on MacBooks (MBA, MBP)
 showBatteryPercentage=true # <-- only applied on MacBooks (MBA, MBP)
+# ---- 3.1.2 Window handling ----
+enableFullDraggableWindows=false
+showScrollbars=true
+# ---- 3.1.3 Text handling ----
+disableAnnoyingTextcorrections=true
+# ---- 3.1.4 Keyboard & Mouse ----
+disableNaturalScrolling=true
+enableTrackpadClicks=true # <-- only applied on MacBooks (MBA, MBP)
 fasterMouseCursor=true
+fnKeyFunctionanlity='emoji' # Modes: off=Do nothing, emoji=Emojis & Symbols, language=Input sources, dictation=Start Dictation
+# ---- 3.1.5 Apple Apps ----
+useRealNamesForContacts=true
+showMusicNextSongPlaying=false
+showSubjectInMessagesApp=false
 
 # -- 3.2 macOS Finder customizations --
 customizeFinder=true # <-- If false, below settings will have NO effect
@@ -155,11 +165,11 @@ minimalDock=false
 showLibraryFolder=true
 addUserApplicationsFolder=true
 addUserWebsitesFolder=true
-# -- 3.4.1 «Games» folder --
+# ---- 3.4.1 «Games» folder ----
 addUserGamesFolder=true
 useCustomGamesFolderIcon=true # <-- Requires Games Folder (addUserGamesFolder=TRUE)
 useCustomGamesFolderIconURL='https://swissmacuser.ch/wp-content/uploads/2021/06/Games-Folder-Icon-macOS-12-Monterey-detailed.png'
-# -- 3.4.2 Wallpapers (Desktop Pictures) --
+# ---- 3.4.2 Wallpapers (Desktop Pictures) ----
 downloadWallpapers=true # <-- Required to download any Wallpapers
 dynamicWallpaperExodus=false
 dynamicWallpaperFuji=false
@@ -167,10 +177,11 @@ dynamicWallpaperISS=false
 
 # -- 3.5 Terminal app settings --
 enableTerminalUtf8=true
-useCustomTerminalTheme=true # <-- Requires the URL from next line to download .terminal Theme file
+useCustomTerminalTheme=false # <-- Requires the URL from next line to download .terminal Theme file
 useCustomTerminalThemeURL='https://gist.githubusercontent.com/oliveratgithub/c9dde424966a7b9b5b7e9d1c28bf8f2e/raw/'
 useCustomTerminalConfigurations=false # If true, a URL is required to download and apply .zhsrc commands
 useCustomTerminalConfigurationsURL=''
 
 # -- 3.6 Application Hardening --
 secureSafariBrowser=true
+removeTrashbinItemsPeriodically=true # Auto-remove items from Trash after 30 days
