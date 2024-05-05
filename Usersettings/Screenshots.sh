@@ -11,14 +11,15 @@ export -f useNumericScreenshots
 # Supported file types: png (default), bmp, gif, heic, jpg, jp2, tif, pict, pdf, tga, tiff
 function saveScreenshotsAs(){
     local changeFormat=false
-    case "$ScreenshotsImageFormat" in
+    local configUseScreenshotsFormat="$1"
+    case "$configUseScreenshotsFormat" in
         png) changeFormat=false;;
-        bmp|gif|heic|jpg|jp2|tif|pict|pdf|tga|tiff) changeFormat="$ScreenshotsImageFormat";;
+        bmp|gif|heic|jpg|jp2|tif|pict|pdf|tga|tiff) changeFormat="$configUseScreenshotsFormat";;
         *) changeFormat=false;;
     esac
 
     # Screenshot format is valid and not default (png):
-    if [ ! "$changeFormat" ]; then
+    if [ "$changeFormat" != false ]; then
         defaults write com.apple.screencapture "type" -string "$changeFormat"
     fi
 }

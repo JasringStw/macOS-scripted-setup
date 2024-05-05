@@ -165,6 +165,11 @@ if [ "$fasterMouseCursor" = true ]; then
     increaseMouseSpeed
     showinfo "" "confirm"
 fi
+if [ "$fnKeyFunction" != 'off' ] || [ "$fnKeyFunction" != false ]; then
+    showinfo "Changing fn 🌐 key functionality:" "note"
+    useFnKeyFor "$fnKeyFunction"
+    showinfo "" "confirm"
+fi
 
 # -- Dock --
 if [ "$speedupDock" = true ]; then
@@ -222,11 +227,19 @@ if [ "$customizeFinder" = true ]; then
     showVolumeIconsOnDesktop
     enableSnapToGrid
     updateApplicationsFolderListColumns
+    if [ "$enableFullDraggableWindows" = true ]; then
+        showinfo "Making all windows fully draggable using ⌘Command+^Control+Click:" "note"
+        enableFullWindowDragzone
+    fi
+    if [ "$removeTrashbinItemsPeriodically" = true ]; then
+        showinfo "Trash bin: automatically remove items after 30 days:" "note"
+        enableTrashAutoremove30days
+    fi
     showinfo "" "confirm"
 
     # --> Screenshots
     showinfo "Improving Screenshots:" "note"
-    saveScreenshotsAs
+    saveScreenshotsAs "$useScreenshotsFormat"
     if [ "$useScreenshotsNumericFilename" = true ]; then
         useNumericScreenshots
     fi
@@ -249,6 +262,18 @@ if [ "$customizeFinder" = true ]; then
     restartFinder
     showinfo "" "confirm"
 fi
+# -- Apple Apps --
+if [ "$showMusicNextSongPlaying" = true ]; then
+    showinfo "Show «Playing next» notification from Music App:" "note"
+    showNextSongNotification
+    showinfo "" "confirm"
+fi
+if [ "$showSubjectInMessagesApp" = true ]; then
+    showinfo "Show the Subject field in Messages App:" "note"
+    enableMessagesSubjectField
+    showinfo "" "confirm"
+fi
+
 # -- Safari --
 if [ "$secureSafariBrowser" = true ]; then
     showinfo "More Privacy and Security for Safari:" "notice"
@@ -420,10 +445,18 @@ if [ "$installGrandPerspective" = true ]; then
     installAppGrandPerspective
     showinfo "" "confirm"
 fi
+# -- Heroic Games Launcher --
+if [ "$installHeroicGamesLauncher" = true ]; then
+    showinfo "Installing Heroic Games Launcher:" "note"
+    installAppHeroicGamesLauncher
+    showinfo "" "confirm"
+fi
 # -- LinearMouse.app --
 if [ "$installLinearMouse" = true ]; then
     showinfo "Installing LinearMouse:" "note"
     installAppLinearMouse
+    showinfo "Disabling Mouse cursor acceleration of macOS:" "note"
+    disableMouseAcceleration
     showinfo "" "confirm"
 fi
 # -- Macs Fan Control.app --
